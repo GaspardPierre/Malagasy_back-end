@@ -27,7 +27,7 @@ class ShoppingCart extends Model {}
             allowNull: false
 
         }
-    }, { sequelize, modelName: "shoppingcart" });
+    }, { sequelize, modelName: "ShoppingCart" });
 
 
     module.exports = ShoppingCart;

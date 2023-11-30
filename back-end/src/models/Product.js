@@ -9,7 +9,7 @@ Product.init({
       primaryKey: true,
       autoIncrement: true
     },
-    Nom: {
+    Name: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -17,11 +17,11 @@ Product.init({
       type: DataTypes.STRING,
       allowNull: false
     },
-    Prix: {
+    Price: {
       type: DataTypes.FLOAT,
       allowNull: false
     },
-    QuantiteDisponible: {
+    AvailableQuantity: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -29,11 +29,11 @@ Product.init({
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    CategorieID: {
+    CategoryID: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    DateCreation: {
+    CreatedAt: {
       type: DataTypes.DATE,
       allowNull: false
     },

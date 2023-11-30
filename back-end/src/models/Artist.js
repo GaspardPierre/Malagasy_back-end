@@ -9,16 +9,16 @@ Artist.init({
     primaryKey: true,
     autoIncrement: true
   },
-  Nom: {
+  Name: {
     type : DataTypes.STRING,
     allowNull: false
 
   } ,
 
-  Biographie: DataTypes.STRING,
+  Biography: DataTypes.STRING,
 
-  SiteWeb: DataTypes.STRING,
-  PhotoProfil: DataTypes.STRING
+  WebSite: DataTypes.STRING,
+  ProfilePhoto: DataTypes.STRING
 }, { sequelize, modelName: "artist" });
     
 
