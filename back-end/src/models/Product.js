@@ -1,13 +1,14 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
+const sequelize = require("../config/db");
 
 class Product extends Model {}
 
 Product.init({
-    ProduitID: {
+    ProductID: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
+      field: "product_id"
     },
     Name: {
       type: DataTypes.STRING,
@@ -25,13 +26,15 @@ Product.init({
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    ArtisteID: {
+    ArtistID: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      field: "artist_id"
     },
     CategoryID: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      field : "category_id"
     },
     CreatedAt: {
       type: DataTypes.DATE,

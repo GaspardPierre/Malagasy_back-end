@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
+const sequelize = require("../config/db");
 
 class Transaction extends Model {}
 
@@ -7,7 +7,8 @@ Transaction.init({
     TransactionID: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true
+    autoIncrement: true,
+    field: "transaction_id"
   },
     Amount: {
       type: DataTypes.FLOAT,
@@ -15,12 +16,14 @@ Transaction.init({
     },
     UserID : {
         type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      field: "user_id"
     },
 
   OrderID: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    field: "order_id"
   },
   PayementMeans : {
     type: DataTypes.STRING,

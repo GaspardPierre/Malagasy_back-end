@@ -1,23 +1,26 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
+const sequelize = require("../config/db");
 
 class Order extends Model {}
 
 Order.init({
-  CommandeID: {
+  OrderID: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true
+    autoIncrement: true,
+    field:"order_id"
   },
   UserID: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
       model: "users", // Nom de la table dans la base de données
-      key: "UserID"
+      key: "user_id",
+      field: "user_id"
+
     }
   },
-  DateCommande: {
+  OrderDate: {
     type: DataTypes.DATE,
     allowNull: false
   },
@@ -25,16 +28,17 @@ Order.init({
     type: DataTypes.STRING,
     allowNull: false
   },
-  TotalCommande: {
+  TotalOrder: {
     type: DataTypes.FLOAT,
     allowNull: false
   },
-  AdresseLivraisonID: {
+  AddressLivraisonID: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: "adresses", 
-      key: "AdresseID"
+      model: "addresses", 
+      key: "address_id",
+      field: "address_id"
     }
   }
 }, { sequelize, modelName: "order" });

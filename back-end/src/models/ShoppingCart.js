@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
+const sequelize = require("../config/db");
 
 class ShoppingCart extends Model {}
 
@@ -7,16 +7,19 @@ class ShoppingCart extends Model {}
         CartID: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
+            field: "cart_id"
         },
         UserID: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            field: "user_id"
             
         },
         ProductID: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            field: "product_id"
         },
         Quantity : {
             type : DataTypes.INTEGER,
@@ -27,7 +30,7 @@ class ShoppingCart extends Model {}
             allowNull: false
 
         }
-    }, { sequelize, modelName: "ShoppingCart" });
+    }, { sequelize, modelName: "shoppingCart" });
 
 
     module.exports = ShoppingCart;

@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require(" ../config/database");
+const sequelize = require("../config/db");
 
 class User extends Model {}
 
@@ -7,7 +7,8 @@ User.init({
   UserID: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true
+    autoIncrement: true,
+    field: "user_id"
   },
   Email:{
     type: DataTypes.STRING,
@@ -27,13 +28,13 @@ User.init({
     type : DataTypes.STRING,
     allowNull: false,
   }, 
-  DateInscription: {
+  RegisterAt: {
     type: DataTypes.DATE,
     allowNull: false
 
   },
   
-  DerniereConnexion: {
+  LastConnexion: {
     type: DataTypes.DATE,
     allowNull: true
 

@@ -1,14 +1,14 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/db");
 
-class Address extends Model {}
+class Support extends Model {}
 
-Address.init({
-  AddressID: {
+Support.init({
+  TicketID: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
-    field: "address_id"
+    field: "ticket_id"
   },
   UserID: {
     type: DataTypes.INTEGER,
@@ -19,40 +19,42 @@ Address.init({
       field: "user_id",
     }
   },
-  Street: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true // Assure that street
-    }
-  },
-  City: {
+  Subject: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
       notEmpty: true
     }
   },
-  PostCode: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-      is: /^[0-9a-zA-Z\-]+$/ // Regex pour un code postal standard
-    }
-  },
-  Country: {
+  Message: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
       notEmpty: true
     }
+  },
+  StatutTicket: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: "Open", 
+    validate: {
+      isIn: [["Open", "In progress", "closed"]] // Exemple de valeurs acceptées
+    }
+  },
+    OpenAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    defaultValue: DataTypes.NOW
+  },
+  ClosingDate: {
+    type: DataTypes.DATE
+    
   }
 }, { 
   sequelize, 
-  modelName: "address",
-  timestamps: false, // Pas de timestamps automatiques si non nécessaire
-  underscored: true // Utilisation de snake_case pour les noms de colonnes
+  modelName: "support",
+  timestamps: false, 
+  underscored: true 
 });
 
-module.exports = Address;
+module.exports = Support;

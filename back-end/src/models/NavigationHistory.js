@@ -1,37 +1,39 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
+const sequelize = require("../config/db");
 
 class NavigationHistory extends Model {}
 
 NavigationHistory.init({
-  HistoriqueID: {
+  HistoryID: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true
+    autoIncrement: true,
+    field:"history_id"
   },
   UserID: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
       model: "users", // Assurez-vous que ce nom correspond à votre table utilisateurs
-      key: "UserID"
+      key: "user_id",
+      field:"user_id",
     }
   },
-  ProduitID: {
+  ProductID: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: "product", 
+      model: "products", 
     }
   },
-  DateVisite: {
+  VisitedAt: {
     type: DataTypes.DATE,
     allowNull: false,
     defaultValue: DataTypes.NOW // Date et heure de la visite par défaut à 'maintenant'
   }
 }, { 
   sequelize, 
-  modelName: 'navigation_history',
+  modelName: "navigation_history",
   timestamps: false, 
   underscored: true 
 });
