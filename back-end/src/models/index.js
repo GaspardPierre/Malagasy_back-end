@@ -1,5 +1,5 @@
-const Sequelize = require("sequelize");
-const sequelize = require("../config/db");
+import { Model, DataTypes } from "sequelize" ;
+import sequelize from "../config/db.js";
 
 
 const User = require("./User");
@@ -63,7 +63,10 @@ Order.hasMany(Transaction, { foreignKey: "OrderID" });
 Transaction.belongsTo(Order, { foreignKey: "OrderID" });
 Order.belongsTo(Address, { foreignKey: "AddressLivraisonID" });
 
-module.exports = {
+
+
+
+export {
   User,
   Order,
   Review,
@@ -79,11 +82,6 @@ module.exports = {
   Stock,
   Newsletter
 };
-
-
-
-
-
 
 
 

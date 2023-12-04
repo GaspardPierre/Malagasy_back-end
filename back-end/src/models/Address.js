@@ -1,5 +1,6 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+import { Model, DataTypes } from "sequelize" ;
+import sequelize from "../config/db.js";
+
 
 class Address extends Model {}
 
@@ -55,4 +56,4 @@ Address.init({
   underscored: true // Utilisation de snake_case pour les noms de colonnes
 });
 
-module.exports = Address;
+export default Address;

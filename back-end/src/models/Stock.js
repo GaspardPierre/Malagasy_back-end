@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+import { Model, DataTypes } from "sequelize" ;
+import sequelize from "../config/db.js";
 
 class Stock extends Model {}
 
@@ -15,9 +15,13 @@ Stock.init({
     allowNull: false,
     field:"product_id"
   },
-  CurrentAmount: DataTypes.INTEGER,
+  CurrentAmount: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  }
+  ,
   MinimunAMount: DataTypes.INTEGER
 }, { sequelize, modelName: "stock" });
 
-module.exports = Stock;
+export default Stock;
 

@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+import { Model, DataTypes } from "sequelize" ;
+import sequelize from "../config/db.js";
 
 class NavigationHistory extends Model {}
 
@@ -38,4 +38,4 @@ NavigationHistory.init({
   underscored: true 
 });
 
-module.exports = NavigationHistory
+export default NavigationHistory;

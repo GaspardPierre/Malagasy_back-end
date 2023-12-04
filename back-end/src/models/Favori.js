@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+import { Model, DataTypes } from "sequelize" ;
+import sequelize from "../config/db.js";
 
 class Favori extends Model {}
 
@@ -23,4 +23,4 @@ Favori.init({
     DateAddition : DataTypes.DATE
 },  { sequelize, modelName: "favori" });    
 
-module.exports = Favori;    
+export default Favori;   

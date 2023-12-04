@@ -1,5 +1,6 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+import { Model, DataTypes } from "sequelize" ;
+import sequelize from "../config/db.js";
+
 
 class Product extends Model {}
 
@@ -41,8 +42,8 @@ Product.init({
       allowNull: false
     },
     Dimensions: DataTypes.STRING, 
-    Poids: DataTypes.FLOAT 
+    Weight: DataTypes.FLOAT 
   }, { sequelize, modelName: "product" });
 
-  module.exports = Product;
+ export default Product;
   

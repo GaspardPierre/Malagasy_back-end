@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+import { Model, DataTypes } from "sequelize" ;
+import sequelize from "../config/db.js";
 
 class Newsletter extends Model {}
 
@@ -21,4 +21,4 @@ Newsletter.init({
   }
 }, { sequelize, modelName: "newsletter" });
 
-module.exports = Newsletter;
+export default Newsletter;

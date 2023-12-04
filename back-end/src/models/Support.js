@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+import { Model, DataTypes } from "sequelize" ;
+import sequelize from "../config/db.js";
 
 class Support extends Model {}
 
@@ -57,4 +57,4 @@ Support.init({
   underscored: true 
 });
 
-module.exports = Support;
+export default Support;

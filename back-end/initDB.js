@@ -1,5 +1,5 @@
-const sequelize = require("./src/config/db");
-const { User, Category, Artist, Product, Address, Order, Review, Favori, NavigationHistory, ShoppingCart, Stock, Transaction, Support, Newsletter } = require("./src/models");
+import sequelize from "./src/config/db.js";
+import { User, Category, Artist, Product, Address, Order, Review, Favori, NavigationHistory, ShoppingCart, Stock, Transaction, Support, Newsletter } from "./src/models/index.js";
 
 async function initDB() {
   try {
@@ -28,4 +28,4 @@ async function initDB() {
   }
 }
 
-module.exports = initDB;
+export default initDB;

@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+import { Model, DataTypes } from "sequelize" ;
+import sequelize from "../config/db.js";
 
 class Transaction extends Model {}
 
@@ -41,4 +41,4 @@ Transaction.init({
   modelName: "transaction"
 });
 
-module.exports = Transaction;
+export default Transaction;
