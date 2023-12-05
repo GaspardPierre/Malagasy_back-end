@@ -1,24 +1,23 @@
-import { Model, DataTypes } from "sequelize" ;
+import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
 
 class Order extends Model {}
 
 Order.init({
-  OrderID: {
+  id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
-    field:"order_id"
+    field: "order_id"
   },
   UserID: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: "users", // Nom de la table dans la base de données
-      key: "user_id",
-      field: "user_id"
-
-    }
+      model: "User", // Utilisez le nom du modèle Sequelize
+      key: "id", // Référencez la clé primaire du modèle User
+    },
+    field: "user_id" // Nom de la colonne dans la base de données
   },
   OrderDate: {
     type: DataTypes.DATE,
@@ -36,10 +35,10 @@ Order.init({
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: "addresses", 
-      key: "address_id",
-      field: "address_id"
-    }
+      model: "Address", // Utilisez le nom du modèle Sequelize
+      key: "id", // Référencez la clé primaire du modèle Address
+    },
+    field: "address_id" // Nom de la colonne dans la base de données
   }
 }, { sequelize, modelName: "order" });
 

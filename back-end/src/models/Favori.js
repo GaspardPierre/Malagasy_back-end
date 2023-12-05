@@ -4,7 +4,7 @@ import sequelize from "../config/db.js";
 class Favori extends Model {}
 
 Favori.init({
-    FavoriID: {
+    id: {
         type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,

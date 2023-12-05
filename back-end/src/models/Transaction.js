@@ -4,7 +4,7 @@ import sequelize from "../config/db.js";
 class Transaction extends Model {}
 
 Transaction.init({
-    TransactionID: {
+    id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,

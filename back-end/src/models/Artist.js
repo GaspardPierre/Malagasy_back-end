@@ -4,7 +4,7 @@ import sequelize from "../config/db.js";
 class Artist extends Model {}
 
 Artist.init({
-    ArtisteID: {
+    id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,

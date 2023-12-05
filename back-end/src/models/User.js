@@ -4,7 +4,7 @@ import sequelize from "../config/db.js";
 class User extends Model {}
 
 User.init({
-  UserID: {
+  id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
@@ -13,6 +13,7 @@ User.init({
   Email:{
     type: DataTypes.STRING,
     allowNull: false,
+    field :"Email"
   },
   PasswordHash: {
    type :  DataTypes.STRING,

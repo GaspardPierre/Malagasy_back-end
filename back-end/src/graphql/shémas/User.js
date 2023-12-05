@@ -12,4 +12,18 @@ export const userTypeDefs = gql`
     statutCompte: String!
     role: String!
   }
+  type Query {
+    users: [User]
+    user(id: ID!): User
+  }
+
+  type Mutation {
+    createUser(email: String!, passwordHash: String!, name: String!, firstName: String!, registerAt: String!, statutCompte: String!, role: String!): User
+    deleteUser(id: ID!): Message
+    updateUser(id: ID!, email: String, passwordHash: String, name: String, firstName: String, registerAt: String, statutCompte: String, role: String): User
+  }
+
+  type Message {
+    message: String!
+  }
    `; 

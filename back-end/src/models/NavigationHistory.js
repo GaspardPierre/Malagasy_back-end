@@ -4,37 +4,39 @@ import sequelize from "../config/db.js";
 class NavigationHistory extends Model {}
 
 NavigationHistory.init({
-  HistoryID: {
+  id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
-    field:"history_id"
+    field: "history_id" // Nom de la colonne dans la base de données
   },
   UserID: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: "users", // Assurez-vous que ce nom correspond à votre table utilisateurs
-      key: "user_id",
-      field:"user_id",
-    }
+      model: "User", 
+      key: "id", // La clé primaire de la table de l'utilisateur
+    },
+    field: "user_id", // Nom de la colonne dans la base de données
   },
   ProductID: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: "products", 
-    }
+      model: "Product", // Nom du modèle Sequelize pour le produit
+      key: "id", // La clé primaire de la table du produit
+    },
+    field: "product_id", // Nom de la colonne dans la base de données
   },
   VisitedAt: {
     type: DataTypes.DATE,
     allowNull: false,
-    defaultValue: DataTypes.NOW // Date et heure de la visite par défaut à 'maintenant'
+    defaultValue: DataTypes.NOW
   }
 }, { 
   sequelize, 
-  modelName: "navigation_history",
-  timestamps: false, 
+  modelName: "NavigationHistory", // Utilisez la casse Camel pour les noms de modèles
+  timestamps: false,
   underscored: true 
 });
 

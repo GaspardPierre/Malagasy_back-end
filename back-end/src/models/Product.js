@@ -5,7 +5,7 @@ import sequelize from "../config/db.js";
 class Product extends Model {}
 
 Product.init({
-    ProductID: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,

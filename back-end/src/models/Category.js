@@ -4,13 +4,13 @@ import sequelize from "../config/db.js";
 class Category extends Model {}
 
 Category.init({
-  CategorieID: {
+  id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
     field:"categorie_id"
   },
-  NomCategorie: {
+  CategorieName: {
     type: DataTypes.STRING,
     allowNull: false
 

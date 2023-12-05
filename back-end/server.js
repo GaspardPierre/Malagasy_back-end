@@ -3,29 +3,41 @@ import { expressMiddleware } from "@apollo/server/express4";
 import express from "express";
 import cors from "cors";
 import sequelize from "./src/config/db.js";
-import createServer from "./src/graphqlServer.js";
+import { typeDefs } from "./src/graphql/shémas/shema.js";
+import { resolvers } from "./src/graphql/resolvers/resolvers.js";
 import initDB from "./initDB.js";
+import bodyParser from "body-parser";
 
-sequelize.sync().then(() => {
+sequelize.sync({ force: true }).then(() => {
   console.log("Database & tables created!");
 });
 
 const app = express();
-
-const graphqlServer = createServer(); // Assurez-vous que cela retourne une instance d'ApolloServer
-await graphqlServer.start(); // Démarrez Apollo Server
-
 app.use(cors());
-app.use(express.json());
-app.use('/graphql', expressMiddleware(graphqlServer)); // Intégration avec expressMiddleware
-
-initDB();
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+app.use(bodyParser.json());
+const graphqlServer = new ApolloServer({ 
+  typeDefs, 
+  resolvers 
 });
+graphqlServer.start().then(() => {
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  app.use("/graphql", expressMiddleware(graphqlServer));
+
+ 
+
+  app.use(express.json());
+
+
+  app.get("/", (req, res) => {
+    res.send("Hello World!");
+  });
+
+  // Initialisation de la base de données (si nécessaire)
+  initDB();
+
+
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
 });

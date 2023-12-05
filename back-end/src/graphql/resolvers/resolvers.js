@@ -1,5 +1,5 @@
-import { userResolvers} from "./userResolvers.js";
-import { productResolvers } from "./productResolvers.js";
+import  userResolvers from "./userResolvers.js";
+import productResolvers  from "./productResolvers.js";
 
 
 export const resolvers = {

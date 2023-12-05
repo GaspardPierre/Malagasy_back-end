@@ -1,4 +1,4 @@
-import { User } from "../../models/User.js";
+import  User  from "../../models/User.js";
 
 const userResolvers = {
   Query: {
@@ -25,7 +25,7 @@ const userResolvers = {
   Mutation: {
     createUser: async (_, { email, passwordHash, name, firstName, registerAt, statutCompte, role }) => {
       try {
-        return await User.create({
+        const user = await User.create({
           Email: email,
           PasswordHash: passwordHash,
           Name: name,
@@ -34,6 +34,7 @@ const userResolvers = {
           StatutCompte: statutCompte,
           Role: role,
         });
+        return user; // Retournez la variable `user`
       } catch (error) {
         throw new Error(error.message || "An error occurred while creating the user");
       }

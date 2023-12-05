@@ -1,10 +1,10 @@
-import { Model, DataTypes } from "sequelize" ;
+import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
 
 class Support extends Model {}
 
 Support.init({
-  TicketID: {
+  id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
@@ -14,10 +14,10 @@ Support.init({
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: "users", 
-      key: "user_id",
-      field: "user_id",
-    }
+      model: "User", // Utilisez le nom du modèle Sequelize
+      key: "id", // Référencez la clé primaire du modèle User
+    },
+    field: "user_id", // Nom de la colonne dans la base de données
   },
   Subject: {
     type: DataTypes.STRING,
@@ -36,19 +36,18 @@ Support.init({
   StatutTicket: {
     type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: "Open", 
+    defaultValue: "Open",
     validate: {
       isIn: [["Open", "In progress", "closed"]] // Exemple de valeurs acceptées
     }
   },
-    OpenAt: {
+  OpenAt: {
     type: DataTypes.DATE,
     allowNull: false,
     defaultValue: DataTypes.NOW
   },
   ClosingDate: {
     type: DataTypes.DATE
-    
   }
 }, { 
   sequelize, 

@@ -2,8 +2,9 @@ import gql from "graphql-tag";
 import dateTimeScalar from "../utils/dateTimeScalar.js";
 
 export const productTypeDefs = gql`
-scalar DateTime
-type Product {
+  scalar DateTime
+
+  type Product {
     id: ID!
     name: String!
     description: String!
@@ -11,12 +12,49 @@ type Product {
     availableQuantity: Int!
     artistId: ID!
     categoryId: ID!
-    dimension : String
-    Weight: Float
+    dimension: String
+    weight: Float
     createdAt: DateTime
-    updatedAt: String
-}
+    updatedAt: DateTime
+  }
 
+  type Query {
+    products: [Product]
+    product(id: ID!): Product
+  }
 
-    ` ; 
-  
+  type Mutation {
+    createProduct(
+      name: String!, 
+      description: String!,
+      price: Float!, 
+      availableQuantity: Int!, 
+      artistId: ID!,
+      categoryId: ID!, 
+      dimension: String, 
+      weight: Float,
+      createdAt: DateTime, 
+      updatedAt: DateTime
+    ): Product
+
+    deleteProduct(id: ID!): Message
+
+    updateProduct(
+      id: ID!, 
+      name: String, 
+      description: String,
+      price: Float, 
+      availableQuantity: Int, 
+      artistId: ID,
+      categoryId: ID, 
+      dimension: String, 
+      weight: Float,
+      createdAt: DateTime, 
+      updatedAt: DateTime
+    ): Product
+  }
+
+  type Message {
+    message: String!
+  }
+`;

@@ -1,11 +1,10 @@
-import { Model, DataTypes } from "sequelize" ;
+import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
-
 
 class Address extends Model {}
 
 Address.init({
-  AddressID: {
+  id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
@@ -15,16 +14,16 @@ Address.init({
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: "users", 
-      key: "user_id",
-      field: "user_id",
-    }
+      model: "User", // Utilisez le nom du modèle Sequelize, pas le nom de la table
+      key: "id", // Référencez la clé primaire du modèle User
+    },
+    field: "user_id" // Nom de la colonne dans la base de données
   },
   Street: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      notEmpty: true // Assure that street
+      notEmpty: true
     }
   },
   City: {
@@ -52,8 +51,8 @@ Address.init({
 }, { 
   sequelize, 
   modelName: "address",
-  timestamps: false, // Pas de timestamps automatiques si non nécessaire
-  underscored: true // Utilisation de snake_case pour les noms de colonnes
+  timestamps: false,
+  underscored: true
 });
 
 export default Address;
