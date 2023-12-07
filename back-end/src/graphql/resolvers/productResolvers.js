@@ -15,7 +15,7 @@ const productResolvers = {
             if(!product) {
                 throw new Error("Product not found");
             }
-            return product
+            return product;
            }catch (error) {
             throw new Error(error.message || " An error occurred while fetching the product");
            }
@@ -23,20 +23,30 @@ const productResolvers = {
     },
 
     Mutation: { 
-        createProduct : async (_, {name, description, price, availableQuantity, artistId, categoryId, dimension, weight}
-        ) => {
-          return await Product.create ({
-            Name: name,
-            Description : description,
-            Price: price,
-            AvailableQuantity: availableQuantity,
-            ArtistId: artistId,
-            categoryId: categoryId,
-            Dimension: dimension,
-            Weight:weight,
-            CreatedAt: new Date()
+        createProduct: async (_, { name, description, price, availableQuantity, artistId, categoryId, dimension, weight }) => {
+            try {
+                // Vérifier si l'Artist et la Category existent
+                const artistExists = await Artist.findByPk(artistId);
+                const categoryExists = await Category.findByPk(categoryId);
 
-          });
+                if (!artistExists || !categoryExists) {
+                    throw new Error("Artiste ou catégorie non trouvée");
+                }
+
+                return await Product.create({
+                    Name: name,
+                    Description: description,
+                    Price: price,
+                    AvailableQuantity: availableQuantity,
+                    ArtistId: artistId,
+                    CategoryId: categoryId,
+                    Dimension: dimension,
+                    Weight: weight,
+                    CreatedAt: new Date()
+                });
+            } catch (error) {
+                throw new Error("Erreur lors de la création du produit");
+            }
         },
       //  Delete Product
       deleteProduct: async (_, { id }) => {

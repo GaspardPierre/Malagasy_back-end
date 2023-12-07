@@ -4,7 +4,7 @@ import sequelize from "../config/db.js";
 class ShoppingCart extends Model {}
 
     ShoppingCart.init({
-        id: {
+        CartID: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,

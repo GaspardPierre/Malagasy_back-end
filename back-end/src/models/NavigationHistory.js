@@ -8,13 +8,13 @@ NavigationHistory.init({
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
-    field: "history_id" // Nom de la colonne dans la base de données
+    field:"history_id"
   },
   UserID: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: "User", 
+      model: "User",
       key: "id", // La clé primaire de la table de l'utilisateur
     },
     field: "user_id", // Nom de la colonne dans la base de données
@@ -31,12 +31,12 @@ NavigationHistory.init({
   VisitedAt: {
     type: DataTypes.DATE,
     allowNull: false,
-    defaultValue: DataTypes.NOW
+    defaultValue: DataTypes.NOW // Date et heure de la visite par défaut à 'maintenant'
   }
 }, { 
   sequelize, 
-  modelName: "NavigationHistory", // Utilisez la casse Camel pour les noms de modèles
-  timestamps: false,
+  modelName: "navigation_history",
+  timestamps: false, 
   underscored: true 
 });
 

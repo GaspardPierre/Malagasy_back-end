@@ -8,7 +8,7 @@ export const userTypeDefs = gql`
     name: String!
     firstName: String!
     registerAt: String!
-    lastConnexion: String!
+    lastConnexion: String
     statutCompte: String!
     role: String!
   }

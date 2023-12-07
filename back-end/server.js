@@ -7,6 +7,7 @@ import { typeDefs } from "./src/graphql/shémas/shema.js";
 import { resolvers } from "./src/graphql/resolvers/resolvers.js";
 import initDB from "./initDB.js";
 import bodyParser from "body-parser";
+import morgan from "morgan";
 
 sequelize.sync({ force: true }).then(() => {
   console.log("Database & tables created!");
@@ -21,6 +22,7 @@ const graphqlServer = new ApolloServer({
 });
 graphqlServer.start().then(() => {
 
+  app.use(morgan ("combined"));
   app.use("/graphql", expressMiddleware(graphqlServer));
 
  

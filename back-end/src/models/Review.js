@@ -4,7 +4,7 @@ import sequelize from "../config/db.js";
 class Review extends Model {}
 
 Review.init({
-    id: {
+    ReviewI: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
@@ -23,7 +23,7 @@ Review.init({
   UserID: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    field: "user_id"
+    field:"user_id"
   }
 }, {
   sequelize,

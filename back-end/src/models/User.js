@@ -13,7 +13,6 @@ User.init({
   Email:{
     type: DataTypes.STRING,
     allowNull: false,
-    field :"Email"
   },
   PasswordHash: {
    type :  DataTypes.STRING,

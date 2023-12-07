@@ -4,7 +4,7 @@ import sequelize from "../config/db.js";
 class Newsletter extends Model {}
 
 Newsletter.init({
-    id: {
+    NewsletterID: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,

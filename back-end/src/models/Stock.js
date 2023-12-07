@@ -4,7 +4,7 @@ import sequelize from "../config/db.js";
 class Stock extends Model {}
 
 Stock.init({
-  id: {
+  StockID: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,

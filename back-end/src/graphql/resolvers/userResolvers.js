@@ -34,8 +34,9 @@ const userResolvers = {
           StatutCompte: statutCompte,
           Role: role,
         });
+        console.log("****USER****",user); 
         return user; // Retournez la variable `user`
-      } catch (error) {
+      } catch (error) { console.log(error);
         throw new Error(error.message || "An error occurred while creating the user");
       }
     },
@@ -66,6 +67,7 @@ const userResolvers = {
           StatutCompte: statutCompte,
           Role: role,
         });
+     console.log(user)
         return user;
       } catch (error) {
         throw new Error(error.message || "An error occurred while updating the user");
