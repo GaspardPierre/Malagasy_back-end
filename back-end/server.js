@@ -3,7 +3,7 @@ import { expressMiddleware } from "@apollo/server/express4";
 import express from "express";
 import cors from "cors";
 import sequelize from "./src/config/db.js";
-import { typeDefs } from "./src/graphql/shémas/shema.js";
+import { typeDefs } from "./src/graphql/schémas/schema.js";
 import { resolvers } from "./src/graphql/resolvers/resolvers.js";
 import initDB from "./initDB.js";
 import bodyParser from "body-parser";
