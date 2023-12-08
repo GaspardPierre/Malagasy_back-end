@@ -10,17 +10,17 @@ Favori.init({
       autoIncrement: true,
       field :"favori_id"
     },
-    UserId :{
+    userId :{
         type: DataTypes.INTEGER,
         allowNull: false,
         field: "user_id"
     },
-    ProductId: {
+    productId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         field: "product_id"
     },
-    DateAddition : DataTypes.DATE
+    dateAddition : DataTypes.DATE
 },  { sequelize, modelName: "favori" });    
 
 export default Favori;   

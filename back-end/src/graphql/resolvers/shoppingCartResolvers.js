@@ -39,10 +39,10 @@ const shoppingCartResolvers = {
                   }
   
                   return await ShoppingCart.create({
-                      UserID: userId,
-                      ProductID: productId,
-                      Quantity: quantity,
-                      DateAddition: new Date()
+                      userID: userId,
+                      productID: productId,
+                      quantity: quantity,
+                      dateAddition: new Date()
                   });
               } catch (error) {
                   throw new Error("Erreur lors de l'ajout au panier");

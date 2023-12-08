@@ -4,18 +4,18 @@ import sequelize from "../config/db.js";
 class Stock extends Model {}
 
 Stock.init({
-  StockID: {
+  id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
     field:"stock_id"
   },
-  ProductID: {
+  productID: {
     type :DataTypes.INTEGER,
     allowNull: false,
     field:"product_id"
   },
-  CurrentAmount: {
+  currentAmount: {
     type: DataTypes.INTEGER,
     allowNull: false
   }

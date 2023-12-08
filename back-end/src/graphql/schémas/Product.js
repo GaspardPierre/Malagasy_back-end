@@ -8,10 +8,11 @@ export const productTypeDefs = gql`
     id: ID!
     name: String!
     description: String!
+    photoURL: String
     price: Float!
     availableQuantity: Int!
-    artistId: ID!
-    categoryId: ID!
+    artistID: ID!
+    categoryID: ID!
     dimension: String
     weight: Float
     createdAt: DateTime
@@ -27,10 +28,11 @@ export const productTypeDefs = gql`
     createProduct(
       name: String!, 
       description: String!,
+      photoURL: String,
       price: Float!, 
       availableQuantity: Int!, 
-      artistId: ID!,
-      categoryId: ID!, 
+      artistID: ID!,
+      categoryID: ID!, 
       dimension: String, 
       weight: Float,
       createdAt: DateTime, 
@@ -43,10 +45,11 @@ export const productTypeDefs = gql`
       id: ID!, 
       name: String, 
       description: String,
+      photoURL: String,
       price: Float, 
       availableQuantity: Int, 
-      artistId: ID,
-      categoryId: ID, 
+      artistID: ID,
+      categoryID: ID, 
       dimension: String, 
       weight: Float,
       createdAt: DateTime, 

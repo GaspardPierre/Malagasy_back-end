@@ -10,7 +10,7 @@ Order.init({
     autoIncrement: true,
     field: "order_id"
   },
-  UserID: {
+  userID: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -19,19 +19,19 @@ Order.init({
     },
     field: "user_id" // Nom de la colonne dans la base de données
   },
-  OrderDate: {
+  orderDate: {
     type: DataTypes.DATE,
     allowNull: false
   },
-  Statut: {
+  statut: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  TotalOrder: {
+  totalOrder: {
     type: DataTypes.FLOAT,
     allowNull: false
   },
-  AddressLivraisonID: {
+  addressLivraisonID: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {

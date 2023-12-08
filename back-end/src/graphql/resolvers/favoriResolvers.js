@@ -33,9 +33,9 @@ const favoriResolvers = {
                 }
 
                 return await Favori.create({
-                    UserId: userId,
-                    ProductId: productId,
-                    DateAddition: new Date()
+                    userId: userId,
+                    productId: productId,
+                    dateAddition: new Date()
                 });
             } catch (error) {
                 throw new Error("Erreur lors de l'ajout au favori");

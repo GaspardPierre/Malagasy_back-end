@@ -5,44 +5,48 @@ import sequelize from "../config/db.js";
 class Product extends Model {}
 
 Product.init({
-    ProductID: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       field: "product_id"
     },
-    Name: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Description: {
+    description: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Price: {
+    photoURL: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    price: {
       type: DataTypes.FLOAT,
       allowNull: false
     },
-    AvailableQuantity: {
+    availableQuantity: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    ArtistID: {
+    artistID: {
       type: DataTypes.INTEGER,
       allowNull: false,
       field: "artist_id"
     },
-    CategoryID: {
+    categoryID: {
       type: DataTypes.INTEGER,
       allowNull: false,
       field : "category_id"
     },
-    CreatedAt: {
+    createdAt: {
       type: DataTypes.DATE,
       allowNull: false
     },
-    Dimensions: DataTypes.STRING, 
-    Weight: DataTypes.FLOAT 
+    dimensions: DataTypes.STRING, 
+    weight: DataTypes.FLOAT 
   }, { sequelize, modelName: "product" });
 
  export default Product;

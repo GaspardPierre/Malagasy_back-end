@@ -10,29 +10,29 @@ Transaction.init({
     autoIncrement: true,
     field: "transaction_id"
   },
-    Amount: {
+    amount: {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
-    UserID : {
+    userID : {
         type: DataTypes.INTEGER,
       allowNull: false,
       field: "user_id"
     },
 
-  OrderID: {
+  orderID: {
     type: DataTypes.INTEGER,
     allowNull: false,
     field: "order_id"
   },
-  PayementMeans : {
+  payementMeans : {
     type: DataTypes.STRING,
   },
-  Status: {
+  status: {
     type: DataTypes.STRING,
    
   },
-  TransactionDate : {
+  transactionDate : {
     type: DataTypes.DATE,
     allowNull: false
   }

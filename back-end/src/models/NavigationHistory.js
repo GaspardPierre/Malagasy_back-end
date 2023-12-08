@@ -10,7 +10,7 @@ NavigationHistory.init({
     autoIncrement: true,
     field:"history_id"
   },
-  UserID: {
+  userID: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -19,7 +19,7 @@ NavigationHistory.init({
     },
     field: "user_id", // Nom de la colonne dans la base de données
   },
-  ProductID: {
+  productID: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -28,7 +28,7 @@ NavigationHistory.init({
     },
     field: "product_id", // Nom de la colonne dans la base de données
   },
-  VisitedAt: {
+  visitedAt: {
     type: DataTypes.DATE,
     allowNull: false,
     defaultValue: DataTypes.NOW // Date et heure de la visite par défaut à 'maintenant'

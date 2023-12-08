@@ -4,18 +4,18 @@ import sequelize from "../config/db.js";
 class Newsletter extends Model {}
 
 Newsletter.init({
-    NewsletterID: {
+    id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
     field:"newsletter_id"
   },
-  Email: {
+  email: {
     type: DataTypes.STRING,
     allowNull: false,
     unique: true
   },
-  RegisterAt: {
+  registerAt: {
     type: DataTypes.DATE,
     defaultValue: DataTypes.DATE
   }

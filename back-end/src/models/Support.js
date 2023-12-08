@@ -10,7 +10,7 @@ Support.init({
     autoIncrement: true,
     field: "ticket_id"
   },
-  UserID: {
+  userID: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -19,21 +19,21 @@ Support.init({
     },
     field: "user_id", // Nom de la colonne dans la base de données
   },
-  Subject: {
+  subject: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
       notEmpty: true
     }
   },
-  Message: {
+  message: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
       notEmpty: true
     }
   },
-  StatutTicket: {
+  statutTicket: {
     type: DataTypes.STRING,
     allowNull: false,
     defaultValue: "Open",
@@ -41,12 +41,12 @@ Support.init({
       isIn: [["Open", "In progress", "closed"]] // Exemple de valeurs acceptées
     }
   },
-  OpenAt: {
+  openAt: {
     type: DataTypes.DATE,
     allowNull: false,
     defaultValue: DataTypes.NOW
   },
-  ClosingDate: {
+  closingDate: {
     type: DataTypes.DATE
   }
 }, { 

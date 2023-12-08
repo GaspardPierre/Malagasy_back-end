@@ -26,13 +26,13 @@ const userResolvers = {
     createUser: async (_, { email, passwordHash, name, firstName, registerAt, statutCompte, role }) => {
       try {
         const user = await User.create({
-          Email: email,
-          PasswordHash: passwordHash,
-          Name: name,
-          FirstName: firstName,
-          RegisterAt: registerAt,
-          StatutCompte: statutCompte,
-          Role: role,
+          email: email,
+          passwordHash: passwordHash,
+          name: name,
+          firstName: firstName,
+          registerAt: registerAt,
+          statutCompte: statutCompte,
+          role: role,
         });
         console.log("****USER****",user); 
         return user; // Retournez la variable `user`
@@ -59,13 +59,13 @@ const userResolvers = {
           throw new Error("User not found");
         }
         await user.update({
-          Email: email,
-          PasswordHash: passwordHash,
-          Name: name,
-          FirstName: firstName,
-          RegisterAt: registerAt,
-          StatutCompte: statutCompte,
-          Role: role,
+          email: email,
+          passwordHash: passwordHash,
+          name: name,
+          firstName: firstName,
+          registerAt: registerAt,
+          statutCompte: statutCompte,
+          role: role,
         });
      console.log(user)
         return user;

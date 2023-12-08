@@ -25,10 +25,10 @@ const artistResolvers = {
         createArtist: async (_, { name, biography, webSite, profilePhoto }) => {
             try {
                 return await Artist.create({
-                    Name: name,
-                    Biography: biography,
-                    WebSite: webSite,
-                    ProfilePhoto: profilePhoto
+                    name: name,
+                    biography: biography,
+                    webSite: webSite,
+                    profilePhoto: profilePhoto
                 });
             } catch (error) {
                 throw new Error("Erreur lors de la création de l'artiste");
@@ -41,10 +41,10 @@ const artistResolvers = {
                     throw new Error("Artiste non trouvé");
                 }
                 return await artist.update({
-                    Name: name,
-                    Biography: biography,
-                    WebSite: webSite,
-                    ProfilePhoto: profilePhoto
+                    name: name,
+                    biography: biography,
+                    webSite: webSite,
+                    profilePhoto: profilePhoto
                 });
             } catch (error) {
                 throw new Error("Erreur lors de la mise à jour de l'artiste");

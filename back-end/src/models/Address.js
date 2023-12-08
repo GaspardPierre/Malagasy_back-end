@@ -10,7 +10,7 @@ Address.init({
     autoIncrement: true,
     field: "address_id"
   },
-  UserID: {
+  userID: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -19,7 +19,7 @@ Address.init({
     },
     field: "user_id" // Nom de la colonne dans la base de données
   },
-  Street: {
+  street: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
@@ -33,7 +33,7 @@ Address.init({
       notEmpty: true
     }
   },
-  PostCode: {
+  postCode: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
@@ -41,7 +41,7 @@ Address.init({
       is: /^[0-9a-zA-Z\-]+$/ // Regex pour un code postal standard
     }
   },
-  Country: {
+  country: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {

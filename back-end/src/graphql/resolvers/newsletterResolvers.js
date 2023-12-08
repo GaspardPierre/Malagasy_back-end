@@ -25,8 +25,8 @@ const newsletterResolvers = {
         subscribeToNewsletter: async (_, { email }) => {
             try {
                 return await Newsletter.create({
-                    Email: email,
-                    RegisterAt: new Date()
+                    email: email,
+                    registerAt: new Date()
                 });
             } catch (error) {
                 throw new Error("Erreur lors de l'inscription à la newsletter");

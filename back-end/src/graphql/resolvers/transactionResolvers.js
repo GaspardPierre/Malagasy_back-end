@@ -31,12 +31,12 @@ const transactionResolvers = {
                 }
 
                 return await Transaction.create({
-                    Amount: amount,
-                    UserID: userId,
-                    OrderID: orderId,
-                    PayementMeans: paymentMeans,
-                    Status: status,
-                    TransactionDate: new Date()
+                    amount: amount,
+                    userID: userId,
+                    orderID: orderId,
+                    payementMeans: paymentMeans,
+                    status: status,
+                    transactionDate: new Date()
                 });
             } catch (error) {
                 throw new Error("Erreur lors de la création de la transaction");

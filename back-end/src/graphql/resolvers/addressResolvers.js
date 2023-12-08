@@ -33,11 +33,11 @@ const addressResolvers = {
                 }
 
                 return await Address.create({
-                    UserID: userId,
-                    Street: street,
-                    City: city,
-                    PostCode: postCode,
-                    Country: country
+                    userID: userId,
+                    street: street,
+                    city: city,
+                    postCode: postCode,
+                    country: country
                 });
             } catch (error) {
                 throw new Error("Erreur lors de la création de l'adresse");
@@ -58,10 +58,10 @@ const addressResolvers = {
                 }
 
                 return await address.update({
-                    Street: street,
-                    City: city,
-                    PostCode: postCode,
-                    Country: country
+                    street: street,
+                    city: city,
+                    postCode: postCode,
+                    country: country
                 });
             } catch (error) {
                 throw new Error("Erreur lors de la mise à jour de l'adresse");

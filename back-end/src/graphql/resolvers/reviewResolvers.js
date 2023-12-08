@@ -38,10 +38,10 @@ const reviewResolvers = {
 
                 // Créer la Review
                 return await Review.create({
-                    Rating: rating,
-                    Comment: comment,
-                    ProductID: productId,
-                    UserID: userId
+                    rating: rating,
+                    comment: comment,
+                    productID: productId,
+                    userID: userId
                 });
             } catch (error) {
                 throw new Error(error.message || "Erreur lors de la création de l'avis");
@@ -55,8 +55,8 @@ const reviewResolvers = {
                     throw new Error("Avis non trouvé");
                 }
                 return await review.update({
-                    Rating: rating,
-                    Comment: comment
+                    rating: rating,
+                    comment: comment
                 });
             } catch (error) {
                 throw new Error("Erreur lors de la mise à jour de l'avis");

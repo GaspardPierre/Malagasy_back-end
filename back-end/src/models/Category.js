@@ -10,12 +10,12 @@ Category.init({
     autoIncrement: true,
     field:"categorie_id"
   },
-  Categorie: {
+  categorie: {
     type: DataTypes.STRING,
     allowNull: false
 
   },
-  DescriptionCategorie: DataTypes.STRING
+  descriptionCategorie: DataTypes.STRING
 }, { sequelize, modelName: "category" });
 
 export default Category;

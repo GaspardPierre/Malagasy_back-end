@@ -31,11 +31,11 @@ const supportResolvers = {
                 }
 
                 return await Support.create({
-                    UserID: userId,
-                    Subject: subject,
-                    Message: message,
-                    StatutTicket: "Open",
-                    OpenAt: new Date()
+                    userID: userId,
+                    subject: subject,
+                    message: message,
+                    statutTicket: "Open",
+                    openAt: new Date()
                 });
             } catch (error) {
                 throw new Error("Erreur lors de la création du ticket de support");

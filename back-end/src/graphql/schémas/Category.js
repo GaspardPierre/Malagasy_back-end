@@ -3,8 +3,8 @@ import gql from "graphql-tag";
 export const categoryTypeDefs = gql`
   type Category {
       id: ID!
-      nomsCategorie: String!
-      description: String
+      categorie: String!
+      descriptionCategorie: String
   }
 
   type Query {
@@ -14,14 +14,14 @@ export const categoryTypeDefs = gql`
 
   type Mutation {
       createCategory(
-          nomsCategorie: String!,
-          description: String
+          categorie: String!,
+          descriptionCategorie: String
       ): Category
 
       updateCategory(
           id: ID!,
-          nomsCategorie: String,
-          description: String
+          categorie: String,
+          descriptionCategorie: String
       ): Category
 
       deleteCategory(id: ID!): Category

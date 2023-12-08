@@ -4,28 +4,28 @@ import sequelize from "../config/db.js";
 class ShoppingCart extends Model {}
 
     ShoppingCart.init({
-        CartID: {
+        id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             field: "cart_id"
         },
-        UserID: {
+        userID: {
             type: DataTypes.INTEGER,
             allowNull: false,
             field: "user_id"
             
         },
-        ProductID: {
+        productID: {
             type: DataTypes.INTEGER,
             allowNull: false,
             field: "product_id"
         },
-        Quantity : {
+        quantity : {
             type : DataTypes.INTEGER,
             allowNull: false
         },
-        DateAddition: {
+        dateAddition: {
             type: DataTypes.DATE,
             allowNull: false
 

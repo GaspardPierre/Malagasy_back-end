@@ -1,4 +1,4 @@
-import { Model, DataTypes } from "sequelize" ;
+import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
 
 class User extends Model {}
@@ -10,45 +10,35 @@ User.init({
     autoIncrement: true,
     field: "user_id"
   },
-  Email:{
+  email: { 
     type: DataTypes.STRING,
     allowNull: false,
   },
-  PasswordHash: {
-   type :  DataTypes.STRING,
-   allowNull: false,
-
-  } ,
-  Name: {
+  passwordHash: { 
     type: DataTypes.STRING,
     allowNull: false,
   },
-
-  FirstName: {
-    type : DataTypes.STRING,
+  name: { 
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  firstName: { 
+    type: DataTypes.STRING,
     allowNull: false,
   }, 
-  RegisterAt: {
+  registerAt: { 
     type: DataTypes.DATE,
     allowNull: false
-
   },
-  
-  LastConnexion: {
+  lastConnexion: { 
     type: DataTypes.DATE,
     allowNull: true
-
   },
-
-  
-  StatutCompte: {
-
+  statutCompte: { 
     type: DataTypes.STRING,
     allowNull: false
-
-  } ,
-  
-  Role: {
+  },
+  role: { 
     type: DataTypes.STRING,
     allowNull: false,
   }

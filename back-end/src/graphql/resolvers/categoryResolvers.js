@@ -22,26 +22,20 @@ const categoryResolvers = {
         },
     },
     Mutation: {
-        createCategory: async (_, { categorie, description }) => {
+        createCategory: async (_, { categorie, descriptionCategorie }) => {
             try {
-                return await Category.create({
-                    Categorie: categorie,
-                    DescriptionCategorie: description
-                });
+                return await Category.create({ categorie, descriptionCategorie });
             } catch (error) {
                 throw new Error(error.message || "Erreur lors de la création de la catégorie");
             }
         },
-        updateCategory: async (_, { id, categorie, description }) => {
+        updateCategory: async (_, { id, categorie, descriptionCategorie }) => {
             try {
                 const category = await Category.findByPk(id);
                 if (!category) {
                     throw new Error("Catégorie non trouvée");
                 }
-                return await category.update({
-                    Categorie: categorie,
-                    DescriptionCategorie: description
-                });
+                return await category.update({ categorie, descriptionCategorie });
             } catch (error) {
                 throw new Error(error.message || "Erreur lors de la mise à jour de la catégorie");
             }

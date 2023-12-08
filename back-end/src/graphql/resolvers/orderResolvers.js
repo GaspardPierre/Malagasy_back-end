@@ -37,11 +37,11 @@ const orderResolvers = {
                 }
 
                 return await Order.create({
-                    UserID: userId,
-                    OrderDate: orderDate,
-                    Statut: statut,
-                    TotalOrder: totalOrder,
-                    AddressLivraisonID: addressLivraisonId
+                    userID: userId,
+                    orderDate: orderDate,
+                    statut: statut,
+                    totalOrder: totalOrder,
+                    addressLivraisonID: addressLivraisonId
                 });
             } catch (error) {
                 throw new Error(error.message || "Une erreur s'est produite lors de la création de la commande");
@@ -56,8 +56,8 @@ const orderResolvers = {
                     throw new Error("Commande non trouvée");
                 }
                 return await order.update({
-                    Statut: statut,
-                    TotalOrder: totalOrder
+                    statut: statut,
+                    totalOrder: totalOrder
                 });
             } catch (error) {
                 throw new Error(error.message || "Une erreur s'est produite lors de la mise à jour de la commande");
