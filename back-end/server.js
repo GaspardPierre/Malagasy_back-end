@@ -10,37 +10,45 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import authMiddleware from "./src/middleware/authMiddleware.js";
 
-sequelize.sync({ force: true }).then(() => {
-  console.log("Database & tables created!");
-});
+
 
 const app = express();
-app.use(authMiddleware);
+//configuration
+
 app.use(cors());
 app.use(bodyParser.json());
-app.get("/authorized", function (req, res) {
-  res.send("Secured Resource");
-});
+app.use(morgan ("combined"));
+// Auth
+app.use(authMiddleware);
+// Apollo Server setup
 const graphqlServer = new ApolloServer({ 
   typeDefs, 
   resolvers 
 });
 graphqlServer.start().then(() => {
+app.use("/graphql", expressMiddleware(graphqlServer));
+app.use(express.json());
+//home
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+//Protected Route
+app.get("/authorized", function (req, res) {
+  res.send("Secured Resource");
+});
 
-  app.use(morgan ("combined"));
-  app.use("/graphql", expressMiddleware(graphqlServer));
+//error catching
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
+//Database initialisation
+sequelize.sync({ }).then(() => {
+  console.log("Database & tables created!");
+});
 
- 
-
-  app.use(express.json());
 
 
-  app.get("/", (req, res) => {
-    res.send("Hello World!");
-  });
-
-  // Initialisation de la base de données (si nécessaire)
-  initDB();
 
 
   const PORT = process.env.PORT || 3000;
