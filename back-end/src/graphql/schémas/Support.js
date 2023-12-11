@@ -4,7 +4,7 @@ import dateTimeScalar from "../utils/dateTimeScalar.js";
 export const supportTypeDefs = gql`
   scalar DateTime
 
-  type support {
+  type Support {
       id: ID!
       userId: Int!
       subject: String!
@@ -15,8 +15,8 @@ export const supportTypeDefs = gql`
   }
 
   type Query {
-      supports: [support]
-      support(id: ID!): support
+      supports: [Support]
+      support(id: ID!): Support
   }
 
   type Mutation {
@@ -26,7 +26,7 @@ export const supportTypeDefs = gql`
           message: String,
           statutTicket: String!,
           openAt: DateTime!
-      ): support
+      ): Support
 
       updateSupportTicket(
           id: ID!,
@@ -34,8 +34,8 @@ export const supportTypeDefs = gql`
           message: String,
           statutTicket: String,
           closingDate: DateTime
-      ): support
+      ): Support
 
-      closeSupport(id: ID!): support
+      closeSupport(id: ID!): Support
   }
 `;

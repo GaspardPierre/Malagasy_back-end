@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 export const stockTypeDefs = gql`
-  type stock {
+  type Stock {
       id: ID!
       productId: ID!
       CurrentAmount: Int!
@@ -9,8 +9,8 @@ export const stockTypeDefs = gql`
   }
 
   type Query {
-      stocks: [stock]
-      stock(id: ID!): stock
+      stocks: [Stock]
+      stock(id: ID!): Stock
   }
 
   type Mutation {
@@ -18,14 +18,14 @@ export const stockTypeDefs = gql`
           productId: ID!,
           CurrentAmount: Int!,
           MinimunAmount: Int
-      ): stock
+      ): Stock
 
       updateStock(
           id: ID!,
           CurrentAmount: Int,
           MinimunAmount: Int
-      ): stock
+      ): Stock
 
-      deleteStock(id: ID!): stock
+      deleteStock(id: ID!): Stock
   }
 `;

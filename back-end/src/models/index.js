@@ -11,13 +11,15 @@ import Support from "./Support.js";
 import Stock from "./Stock.js";
 import Review from "./Review.js";
 import Address from "./Address.js";
-import Category from "./Category.js";;
+import Category from "./Category.js";
 import NavigationHistory from "./NavigationHistory.js";
 import Transaction from "./Transaction.js";
+import OrderItem from "./OrderItem.js";
 
 
 
-
+Order.hasMany(OrderItem, { foreignKey: "order_id" });
+OrderItem.belongsTo(Order, { foreignKey: "order_id" });
 User.hasMany(Order, { foreignKey: "user_id" });
 Order.belongsTo(User, { foreignKey: "user_id" });
 User.hasMany(Review, { foreignKey: "user_id" });
@@ -81,7 +83,8 @@ export {
   Product,
   Category,
   Stock,
-  Newsletter
+  Newsletter,
+  OrderItem
 };
 
 

@@ -11,10 +11,20 @@ export const userTypeDefs = gql`
     lastConnexion: String
     statutCompte: String!
     role: String!
+    orders: [Order]
+  reviews: [Review]
+  shoppingCart: ShoppingCart
+  transactions: [Transaction]
+  navigationHistory: [NavigationHistory]
   }
   type Query {
     users: [User]
     user(id: ID!): User
+    userOrders(userId: ID!): [Order]
+    userReviews(userId: ID!): [Review]
+    userShoppingCart(userId: ID!): ShoppingCart
+    userTransactions(userId: ID!): [Transaction]
+    userNavigationHistory(userId: ID!): [NavigationHistory]
   }
 
   type Mutation {

@@ -1,5 +1,5 @@
 import sequelize from "./src/config/db.js";
-import { User, Category, Artist, Product, Address, Order, Review, Favori, NavigationHistory, ShoppingCart, Stock, Transaction, Support, Newsletter } from "./src/models/index.js";
+import { User, Category, Artist, Product, Address, Order, Review, Favori, NavigationHistory, ShoppingCart, Stock, Transaction, Support, Newsletter,OrderItem } from "./src/models/index.js";
 
 async function initDB() {
   try {
@@ -21,6 +21,7 @@ async function initDB() {
     await Transaction.sync();
     await Support.sync();
     await Newsletter.sync();
+    await OrderItem.sync();
 
     console.log("All tables created successfully!");
   } catch (error) {

@@ -12,6 +12,7 @@ import { categoryTypeDefs } from "./Category.js";
 import { addressTypeDefs } from "./Address.js";
 import { transactionTypeDefs } from "./Transaction.js";
 import { stockTypeDefs} from "./Stock.js";
+import { orderItemTypeDefs } from "./OrderItem.js";
 
 
 import gql from "graphql-tag";
@@ -31,6 +32,7 @@ ${categoryTypeDefs}
 ${addressTypeDefs}
 ${supportTypeDefs}
 ${transactionTypeDefs}
-${stockTypeDefs}` ;
+${stockTypeDefs}
+${orderItemTypeDefs}` ;
 
 

@@ -1,5 +1,7 @@
 import Order from "../../models/Order.js";
 import Address from "../../models/Address.js";
+import User from "../../models/User.js";
+import OrderItem from "../../models/OrderItem.js";
 
 const orderResolvers = {
     Query: {
@@ -21,7 +23,25 @@ const orderResolvers = {
                 throw new Error(error.message || "Une erreur s'est produite lors de la récupération de la commande");
             }
         },
+        orderDetails: async (_, { orderId }) => {
+            try {
+              const order = await Order.findByPk(orderId, {
+                include: [
+                    { model : User } ,
+                    {model: OrderItem}
+                ] 
+              });
+              if (!order) {
+                throw new Error("Commande non trouvée");
+              }
+              return order;
+            } catch (error) {
+              throw new Error(error.message || "Une erreur s'est produite lors de la récupération des détails de la commande");
+            }
+          },
+        
     },
+    
     Mutation: {
         createOrder: async (_, { userId, orderDate, statut, totalOrder, addressLivraisonId }) => {
             try {

@@ -8,14 +8,19 @@ import { resolvers } from "./src/graphql/resolvers/resolvers.js";
 import initDB from "./initDB.js";
 import bodyParser from "body-parser";
 import morgan from "morgan";
+import authMiddleware from "./src/middleware/authMiddleware.js";
 
 sequelize.sync({ force: true }).then(() => {
   console.log("Database & tables created!");
 });
 
 const app = express();
+app.use(authMiddleware);
 app.use(cors());
 app.use(bodyParser.json());
+app.get("/authorized", function (req, res) {
+  res.send("Secured Resource");
+});
 const graphqlServer = new ApolloServer({ 
   typeDefs, 
   resolvers 

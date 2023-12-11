@@ -1,4 +1,10 @@
 import  User  from "../../models/User.js";
+import  Order  from "../../models/Order.js";
+import  Review from"../../models/Review.js";
+import ShoppingCart from "../../models/ShoppingCart.js";
+import  Transaction  from "../../models/Transaction.js";
+import NavigationHistory from "../../models/NavigationHistory.js";
+import Product from "../../models/Product.js";
 
 const userResolvers = {
   Query: {
@@ -22,6 +28,79 @@ const userResolvers = {
       }
     },
   },
+  userOrders: async (_, { userId }) => {
+    if (!userId) throw new Error("L'identifiant de l'utilisateur est requis.");
+    
+    try {
+      const user = await User.findByPk(userId);
+      if (!user) throw new Error("Utilisateur non trouvé.");
+  
+      return await Order.findAll({ where: { userId } });
+    } catch (error) {
+      throw new Error(error.message || "Erreur lors de la récupération des commandes de l'utilisateur.");
+    }
+  },
+  
+  userReviews: async (_, { userId, productId }) => {
+    try {
+      // Validation de l'userId et du productId
+      if (!userId) throw new Error("L'identifiant de l'utilisateur est requis.");
+      if (productId && !await Product.findByPk(productId)) {
+        throw new Error("Produit non trouvé.");
+      }
+// Si productId existe, on va chercher le userId et le productID , sinon on cherche juste l'userId
+      const whereClause = productId ? { userId, productId } : { userId };
+      return await Review.findAll({ where: whereClause });
+    } catch (error) {
+      throw new Error(error.message || "Erreur lors de la récupération des avis.");
+    }
+  },
+  
+  userShoppingCart: async (_, { userId }) => {
+    if (!userId) throw new Error("L'identifiant de l'utilisateur est requis.");
+  
+    try {
+      const user = await User.findByPk(userId);
+      if (!user) throw new Error("Utilisateur non trouvé.");
+  
+      const cart = await ShoppingCart.findOne({ where: { userId } });
+      if (!cart) throw new Error("Panier d'achat non trouvé.");
+  
+      return cart;
+    } catch (error) {
+      throw new Error(error.message || "Erreur lors de la récupération du panier d'achat.");
+    }
+  },
+  
+  userTransactions: async (_, { userId }) => {
+    if (!userId) throw new Error("L'identifiant de l'utilisateur est requis.");
+  
+    try {
+      const user = await User.findByPk(userId);
+      if (!user) throw new Error("Utilisateur non trouvé.");
+  
+      return await Transaction.findAll({ where: { userId } });
+    } catch (error) {
+      throw new Error(error.message || "Erreur lors de la récupération des transactions de l'utilisateur.");
+    }
+  },
+  
+  userNavigationHistory: async (_, { userId }) => {
+    if (!userId) throw new Error("L'identifiant de l'utilisateur est requis.");
+  
+    try {
+      const user = await User.findByPk(userId);
+      if (!user) throw new Error("Utilisateur non trouvé.");
+  
+      return await NavigationHistory.findAll({ where: { userId } });
+    } catch (error) {
+      throw new Error(error.message || "Erreur lors de la récupération de l'historique de navigation de l'utilisateur.");
+    }
+  },
+  
+ 
+ 
+
   Mutation: {
     createUser: async (_, { email, passwordHash, name, firstName, registerAt, statutCompte, role }) => {
       try {

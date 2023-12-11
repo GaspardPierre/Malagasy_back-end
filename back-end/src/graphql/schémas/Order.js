@@ -15,11 +15,13 @@ type Order {
     orderDate: DateTime!
     totalOrder: Float!
     addressLivraisonId:ID!
+    user:User
 
 }
 type Query {
     orders: [Order]
     order(id: ID!): Order
+    orderDetails(orderId: ID!) : Order
   }
 
 type Mutation {

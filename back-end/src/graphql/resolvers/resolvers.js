@@ -12,7 +12,7 @@ import reviewResolvers from "./reviewResolvers.js";
 import transactionResolvers from "./transactionResolvers.js";
 import artistResolvers from "./artistResolvers.js";
 import navigationHistoryResolvers from "./navigationHistoryResolvers.js";
-
+import orderItemResolvers from "./orderItemResolvers.js";
 
 export const resolvers = {
     Query: {
@@ -30,6 +30,7 @@ export const resolvers = {
         ...reviewResolvers.Query,
         ...transactionResolvers.Query,
         ...navigationHistoryResolvers.Query,
+        ...orderItemResolvers.Query
     },
     
     Mutation: {
@@ -48,6 +49,7 @@ export const resolvers = {
         ...reviewResolvers.Mutation,
         ...transactionResolvers.Mutation,
         ...navigationHistoryResolvers.Mutation,
+        ...orderItemResolvers.Mutation
 
     },
 };
