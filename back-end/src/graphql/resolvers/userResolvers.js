@@ -18,7 +18,7 @@ const userResolvers = {
       }
     }),
 
-    user: checkRole(["customer","visistor", "admin"], async (_, { id }) => {
+    user: checkRole(["visitor", "admin"], async (_, { id }) => {
       const user = await User.findByPk(id);
       if(user.role !=="admin" && user.id !== id) {
         throw new Error("Unauthorized to fetch other user details");
@@ -108,7 +108,7 @@ const userResolvers = {
  
 
   Mutation: {
-    createUser: async (_, { email, passwordHash, name, firstName, registerAt, statutCompte, role }) => {
+    createUser: async (_, { email, passwordHash, name, firstName, registerAt, statutCompte, role = "visitor" }) => {
      if(!validator.isEmail(email)) {
       throw new Error("Invalid email format") ;
      }
@@ -132,7 +132,7 @@ const userResolvers = {
         throw new Error(error.message || "An error occurred while creating the user");
       }
     },
-    deleteUser: async (_, { id }) => {
+    deleteUser: checkRole(["admin"], async (_, { id }) => {
       try {
         const user = await User.findByPk(id);
         if (!user) {
@@ -143,8 +143,8 @@ const userResolvers = {
       } catch (error) {
         throw new Error(error.message || "An error occurred while deleting the user");
       }
-    },
-    updateUser: async (_, { id, email, passwordHash, name, firstName, registerAt, statutCompte, role }) => {
+    }),
+    updateUser: checkRole(["admin"], async (_, { id, email, passwordHash, name, firstName, registerAt, statutCompte, role  }) => {{
       try {
         const user = await User.findByPk(id);
         if (!user) {
@@ -164,8 +164,8 @@ const userResolvers = {
       } catch (error) {
         throw new Error(error.message || "An error occurred while updating the user");
       }
-    },
-  },
+    }),
+  }
 };
 
 export default userResolvers;
