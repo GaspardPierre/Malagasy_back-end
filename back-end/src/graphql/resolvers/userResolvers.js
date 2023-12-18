@@ -5,18 +5,24 @@ import ShoppingCart from "../../models/ShoppingCart.js";
 import  Transaction  from "../../models/Transaction.js";
 import NavigationHistory from "../../models/NavigationHistory.js";
 import Product from "../../models/Product.js";
+import validator from "validator";
+import checkRole from "../../middleware/checkRole.js";
 
 const userResolvers = {
   Query: {
-    users: async () => {
+    users: checkRole(["admin"], async () => {
       try {
         return await User.findAll();
       } catch (error) {
         throw new Error(error.message || "An error occurred while fetching users");
       }
-    },
+    }),
 
-    user: async (_, { id }) => {
+    user: checkRole(["customer","visistor", "admin"], async (_, { id }) => {
+      const user = await User.findByPk(id);
+      if(user.role !=="admin" && user.id !== id) {
+        throw new Error("Unauthorized to fetch other user details");
+      }
       try {
         const user = await User.findByPk(id);
         if (!user) {
@@ -26,7 +32,7 @@ const userResolvers = {
       } catch (error) {
         throw new Error(error.message || "An error occurred while fetching the user");
       }
-    },
+    }),
   },
   userOrders: async (_, { userId }) => {
     if (!userId) throw new Error("L'identifiant de l'utilisateur est requis.");
@@ -103,6 +109,13 @@ const userResolvers = {
 
   Mutation: {
     createUser: async (_, { email, passwordHash, name, firstName, registerAt, statutCompte, role }) => {
+     if(!validator.isEmail(email)) {
+      throw new Error("Invalid email format") ;
+     }
+     if(validator.isEmpty(passwordHash)) {
+      throw new Error("Password is required");
+     }
+     
       try {
         const user = await User.create({
           email: email,

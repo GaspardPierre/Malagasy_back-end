@@ -9,7 +9,7 @@ import initDB from "./initDB.js";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 import authMiddleware from "./src/middleware/authMiddleware.js";
-import authRoutes from "./src/auth/authRoutes.js";
+import routes from "./src/routes/index.js";
 
 
 
@@ -23,7 +23,12 @@ app.use(morgan ("combined"));
 // Apollo Server setup
 const graphqlServer = new ApolloServer({ 
   typeDefs, 
-  resolvers 
+  resolvers ,
+  context : ({ req }) => { 
+  const user = req.user || null ;
+
+  return {user };
+  }
 });
 graphqlServer.start().then(() => {
 app.use("/graphql", expressMiddleware(graphqlServer));
@@ -32,10 +37,12 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
-//Protected Route
-app.use("/api/auth", authRoutes);
+
 // Auth
-app.use(authMiddleware);
+app.use("/api",authMiddleware);
+
+// API Routes
+app.use("api", routes);
 
 //error catching
 app.use((err, req, res, next) => {

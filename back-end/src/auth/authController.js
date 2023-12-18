@@ -1,6 +1,6 @@
-import User from "../models/user";
+import User from "../models/User.js";
 import jwt from "jsonwebtoken";
-import { loginSchema, signupSchema } from "../validation/validation";
+import { loginSchema, signupSchema } from "../validation/validation.js";
 
 const SECRET = process.env.JWT_SECRET;
 
